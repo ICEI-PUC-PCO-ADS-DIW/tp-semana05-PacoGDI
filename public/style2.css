@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex; 
+  flex-direction: column; 
+  margin: 0;
+}
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    background-color: rgb(60, 142, 162);
+    color: white; 
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.menu-navegacao .nav {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    
+}
+.menu-navegacao .nav-link {
+    color: white;
+    text-decoration: none;
+}
+.form-pesquisa input,
+.form-pesquisa button {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.conteudo-principal {
+    padding: 20px;
+    flex-grow: 1;
+    margin-top: 80px;
+}
+.rodape {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+.links-sociais a {
+    margin-top: 10px;
+    color: rgb(60, 142, 162);
+}
+article{
+    margin-bottom: 56px;
+}
+.links-sociais{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0px;
+}
