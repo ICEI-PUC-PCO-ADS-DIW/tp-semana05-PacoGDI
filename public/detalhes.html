@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Item</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header>
+        <div class="cabecalho">
+            <h1 class="logo">Leia Hoje</h1>
+            <nav class="menu-navegacao">
+                <ul class="nav">
+                    <li class="nav-item"><a href="#destaques" class="nav-link">Em Desteques</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Meus Favoritos</a></li>
+                    <li class="nav-item"><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="#sobre" class="nav-link">Contato</a></li> 
+
+            </nav>
+            <form class="form-pesquisa">
+                <input type="text" id="busca-livro" placeholder="Buscar livros...">
+                <input type="text" id="busca-autor" placeholder="Autor...">
+                <button type="submit">Pesquisar</button>
+            </form>
+        </div>
+
+    </header>
+
+    <main class="conteudo-principal">
+        <div class="detalhe-livro-container">
+            <img id="detalhe-imagem" src="" alt="Capa do livro" width="250">
+            <div class="detalhe-texto">
+                <h1 id="detalhe-titulo"></h1>
+                <p id="detalhe-autor"></p>
+                <h2>Resumo</h2>
+                <p id="detalhe-resumo"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p>© 2025 Leia Hoje. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="livros.js"></script>
+
+    <script>
+        window.onload = function() {
+            // Pega os parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const livroId = urlParams.get('id'); // Pega o valor do parâmetro 'id'
+
+            // Procura o livro no nosso banco de dados
+            const livro = bancoDeDadosLivros[livroId];
+
+            // Se o livro foi encontrado...
+            if (livro) {
+                // Atualiza o conteúdo da página com as informações do livro
+                document.title = livro.titulo; // Atualiza o título da aba do navegador
+                document.getElementById('detalhe-imagem').src = livro.imagem;
+                document.getElementById('detalhe-titulo').textContent = livro.titulo;
+                document.getElementById('detalhe-autor').textContent = "Autor: " + livro.autor;
+                document.getElementById('detalhe-resumo').textContent = livro.resumo;
+            } else {
+                // Se nenhum livro for encontrado com esse ID
+                document.getElementById('detalhe-titulo').textContent = "Livro não encontrado!";
+                document.getElementById('detalhe-resumo').textContent = "Por favor, volte para a página inicial e selecione um livro.";
+            }
+        };
+    </script>
+</body>
+</html>

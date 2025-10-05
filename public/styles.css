@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex; 
+  flex-direction: column; 
+  margin: 0;
+}
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    background-color: rgb(60, 142, 162);
+    color: white; 
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.menu-navegacao .nav {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    
+}
+.menu-navegacao .nav-link {
+    color: white;
+    text-decoration: none;
+}
+.form-pesquisa input,
+.form-pesquisa button {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.conteudo-principal {
+    padding: 20px;
+    flex-grow: 1;
+    margin-top: 80px;
+}
+.banner {
+    position: relative; 
+    width: 100%;
+    height: 400px; 
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 30px; 
+}
+.banner img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    z-index: 1; 
+}
+.texto-banner {
+    position: relative; 
+    z-index: 2;
+    color: white; 
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4); 
+    border-radius: 8px;
+    max-width: 80%; 
+}
+.texto-banner h2 {
+    font-size: 2.5em; 
+    margin-bottom: 10px;
+}
+.texto-banner p {
+    font-size: 1.2em; 
+}
+.container-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.conteudo-principal h2 {
+    margin-bottom: 20px;
+}
+.card-livro {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin-bottom: 20px;
+    
+}
+.card-livro:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+}
+.capa-livro {
+    width: 100%;
+    height: 200px;
+    background-color: #ccc;
+    background-size: cover;
+    background-position: center;
+}
+.conteudo-card {
+    padding: 15px;
+}
+.conteudo-card h3 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+.autor-card {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+}
+.botao-card {
+    display: inline-block;
+    background-color: rgb(60, 142, 162);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.botao-card:hover {
+    background-color: rgb(45, 110, 127);
+}
+.secao-artigos {
+    border: none; 
+}
+.rodape {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+.links-sociais a {
+    margin-top: 10px;
+    color: rgb(60, 142, 162);
+}
+.sobre {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.sobre p {
+    margin-bottom: 16px;
+}
+article{
+    margin-bottom: 56px;
+}
+.links-sociais{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0px;
+}

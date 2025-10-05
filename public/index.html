@@ -1,13 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Leia hoje</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
-    <h1>Olá mundo</h1>
+
+    <header>
+        
+        <div class="cabecalho">
+            <h1 class="logo"><a href="index.html" style="color:white; text-decoration:none;">Leia Hoje</a></h1>
+            <nav class="menu-navegacao">
+                <ul class="nav">
+                    <li class="nav-item"><a href="#destaques" class="nav-link">Em Desteques</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Meus Favoritos</a></li>
+                    <li class="nav-item"><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="#sobre" class="nav-link">Contato</a></li> 
+
+            </nav>
+            <form class="form-pesquisa">
+                <input type="text" id="busca-livro" placeholder="Buscar livros...">
+                <input type="text" id="busca-autor" placeholder="Autor...">
+                <button type="submit">Pesquisar</button>
+            </form>
+        </div>
+
+    </header>
+
+    <main class="conteudo-principal">
+
+        <section class="banner">
+            <img src="imagens/banner.jpg" alt="Descrição da imagem">
+            <div class="texto-banner">
+                <h2>Descubra livros que transformam vidas</h2>
+                <p>Encontre obras que inspiram, educam e entretêm. Tudo ao alcance de um clique!</p>
+            </div>
+        </section> 
+      
+        <article class="sobre" id="sobre">
+            <h2>Sobre a Leia Hoje</h2>
+            <p>A Leia Hoje é uma plataforma dedicada a conectar leitores com livros que transformam vidas. Nosso objetivo é facilitar o acesso a obras que ajudam no desenvolvimento pessoal, tudo ao alcance de um clique. </p>
+            <p>Feito por Paco Lemoas estudante PUC MINAS CONTAGEM - ADS</p>  
+            <p>Em casa de alguma duvida ou opinião sobre o site me chame aqui: pacogaribaldi@gmail.com</p>    
+        </article>
+        
+        <section id="destaques" class="secao-artigos">
+            <h2>Livros em Destaque</h2>
+            <div class="container-cards">
+            <article class="card-livro" >
+                <img src="imagens/gostar.png" alt="Descrição da imagem">
+                <div class="conteudo-card">
+                    <h3>Como fazer alguém gostar de você em 90 segundos</h3>
+                    <p class="autor-card">Autor: Nicholas Boothman</p>
+                    <a href="detalhes.html?id=gostar-90s" class="botao-card">Detalhes</a>
+                </div>
+            </article>
+            <article class="card-livro">
+                <img src="imagens/convencer.png" alt="Descrição da imagem">
+                <div class="conteudo-card">
+                    <h3>Como convencer alguém em 90 segundos</h3>
+                    <p class="autor-card">Autor: Nicholas Boothman</p>
+                    <a href="detalhes.html?id=convencer-90s" class="botao-card">Detalhes</a>
+                    
+                </div>
+            </article>
+            <article class="card-livro">
+                <img src="imagens/amigos.png" alt="Descrição da imagem">
+                <div class="conteudo-card">
+                    <h3>Como fazer amigos e influenciar pessoas</h3>
+                    <p class="autor-card">Autor: Dale Carnegie</p>
+                    <a href="detalhes.html?id=fazer-amigos" class="botao-card">Detalhes</a>
+                </div>
+            </article>
+            <article class="card-livro">
+                <img src="imagens/persuasao.png" alt="Descrição da imagem">
+                <div class="conteudo-card">
+                    <h3>As armas da persuasão</h3>
+                    <p class="autor-card">Autor: Robert Cialdini</p>
+                    <a href="detalhes.html?id=persuasao" class="botao-card">Detalhes</a>
+                </div>
+            </article>
+            <article class="card-livro">
+                <img src="imagens/persuasao2.png" alt="Descrição da imagem">
+                <div class="conteudo-card">
+                    <h3>As armas da persuasão 2.0</h3>
+                    <p class="autor-card">Autor: Robert Cialdini</p>
+                    <a href="detalhes.html?id=armas-persuasao 2.0" class="botao-card">Detalhes</a>
+                </div>
+            </article>
+            </div>
+            
+            
+            
+
+        </section>
+
+   
+    </main>
+
+    <footer class="rodape">
+        <div class="links-sociais">
+            <a href="#" aria-label="Link para o Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" aria-label="Link para o Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Link para o Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <p>© 2025 Leie Hoje. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Encontra os dois campos de busca pelo ID que adicionamos
+        const inputBuscaLivro = document.getElementById('busca-livro');
+        const inputBuscaAutor = document.getElementById('busca-autor');
+
+        // Função que faz a mágica do filtro
+        function filtrarLivros() {
+            // Pega o que foi digitado em cada campo, em letras minúsculas
+            const termoBuscaLivro = inputBuscaLivro.value.toLowerCase();
+            const termoBuscaAutor = inputBuscaAutor.value.toLowerCase();
+            
+            // Encontra todos os cards de livro na página
+            const todosOsLivros = document.querySelectorAll('.card-livro');
+
+            // Passa por cada card de livro, um por um
+            todosOsLivros.forEach(livro => {
+                // Pega o texto do título (h3) e do autor (p.autor-card) dentro do card
+                const tituloLivro = livro.querySelector('h3').textContent.toLowerCase();
+                const autorLivro = livro.querySelector('.autor-card').textContent.toLowerCase();
+
+                // Verifica se o texto do card corresponde à busca nos dois campos
+                const correspondeAoLivro = tituloLivro.includes(termoBuscaLivro);
+                const correspondeAoAutor = autorLivro.includes(termoBuscaAutor);
+
+                // Se o card corresponder a AMBAS as buscas (título e autor)
+                if (correspondeAoLivro && correspondeAoAutor) {
+                    // Ele é exibido
+                    livro.style.display = 'flex'; // Usamos 'flex' porque seu card é um flex container
+                } else {
+                    // Senão, ele é escondido
+                    livro.style.display = 'none';
+                }
+            });
+        }
+
+        // Adiciona um "escutador" para reagir quando o usuário digitar em QUALQUER um dos campos
+        inputBuscaLivro.addEventListener('keyup', filtrarLivros);
+        inputBuscaAutor.addEventListener('keyup', filtrarLivros);
+
+        <!-- Custom JS -->
+        src="app.js"
+
+    </script>
+    
 </body>
+
 </html>
